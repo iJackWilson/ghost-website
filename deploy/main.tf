@@ -85,7 +85,7 @@ resource "aws_instance" "ghost-website-ec2-instance" {
   vpc_security_group_ids= [aws_security_group.ghost-website-sg.id]
   associate_public_ip_address = true
 
-  tags {
+  tags = {
     Name = "ghost"
   }
 }
