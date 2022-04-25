@@ -87,5 +87,6 @@ resource "aws_instance" "ghost-website-ec2-instance" {
 
   tags {
     Name = "ghost"
+  }
 }
 
