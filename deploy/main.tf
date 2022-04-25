@@ -27,5 +27,6 @@ resource "aws_s3_bucket" "tfstate-ghost-website_jackwilson_uk" {
       	  apply_server_side_encryption_by_default {
           sse_algorithm = "AES256"
 	}
-    }
+     }
+  }
 }
