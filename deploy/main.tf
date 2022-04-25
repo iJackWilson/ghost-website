@@ -92,5 +92,7 @@ resource "aws_instance" "ghost-website-ec2-instance" {
   user_data = <<EOF
 #!/bin/bash
 echo -e "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+qmohGVLTdSqRhXXIoRhedqj5D59tpYQyGa4EvBtJMZ2pzA7/ZX7VbgFem8If5EPTyI0ZnzPFGBv1dXbBRjSHCOEPWKRl9q3Zodp507CfyyixcVjSGxoGQkbrWAJE4hg5nl6DJZ+DlBwv1N+ppgRk/IN8cIgcowecyLWRHkV2w8biGGKZSCfv7gxbXcckaEKFg6u++Fg34hNoyieUDlCshz5NLP8Nhcfilf3ZcCM87IYCaeU81J7LYiBBTllWk6qf6GiIoEg+c8Pf8bCbrf/d8LO6RRbvclttz2Mcka93Ncv/lN8Za6W8RcCTE0fZabziVHEAaQsVe3H1pm8eDkZz" >> /home/ec2-user/.ssh/authorized_keys
+
+EOF
 }
 
