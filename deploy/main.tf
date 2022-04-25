@@ -23,7 +23,6 @@ resource "aws_vpc" "ghost-vpc" {
 resource "aws_subnet" "ghost-public-subnet" {
   vpc_id		= aws_vpc.ghost-vpc.id
   cidr_block		= "10.0.1.0/24"
-  availability_zone	= "1a"
 }
 
 resource "aws_internet_gateway" "ghost-igw" {
