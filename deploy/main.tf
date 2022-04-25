@@ -77,6 +77,7 @@ resource "aws_security_group" "ghost-website-sg" {
 }
 
 resource "aws_instance" "ghost-website-ec2-instance" {
+  name			= "ghost"
   instance_type 	= "t3.micro"
   ami			= "ami-0006ba1ba3732dd33" 
   key_name		= "EC2-eu-central-1"
