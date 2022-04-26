@@ -109,7 +109,6 @@ EOF
 
 resource "aws_ebs_volume" "ghost-ebs-volume" {
   availability_zone = "eu-central-1c"
-  encrypted 	    = "true"
   size		    = 10
 }
 
