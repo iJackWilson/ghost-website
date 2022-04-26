@@ -127,13 +127,13 @@ resource "aws_route53_health_check" "ghost-health-check-webroot-reachable" {
   type 		    = "HTTP"
   resource_path     = "/"
   failure_threshold = "5"
-  failure_interval  = "30"
+  request_interval  = "30"
 }
 
 resource "aws_cloudwatch_metric_alarm" "ghost-cw-metric-cpu-util" {
   alarm_name	      = "ghost-cpu-util-alarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_period   = "2"
+  evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
   namespace           = "AWS/EC2"
   period              = "120"
