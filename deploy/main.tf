@@ -120,3 +120,31 @@ resource "aws_eip" "ghost-instance-eip" {
   instance	= aws_instance.ghost-website-ec2-instance.id
   vpc		= true
 }
+
+resource "aws_route53_health_check" "ghost-health-check-webroot-reachable" {
+  fqdn 		    = "blog.jackwilson.uk"
+  port 		    = 443
+  type 		    = "HTTP"
+  resource_path     = "/"
+  failure_threshold = "5"
+  failure_interval  = "30"
+}
+
+resource "aws_cloudwatch_metric_alarm" "ghost-cw-metric-cpu-util" {
+  alarm_name	      = "ghost-cpu-util-alarm"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_period   = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "80"
+  alarm_description   = "This metric monitors ec2 cpu utilization"
+}
+
+resource "aws_route53_health_check" "ghost-health-check-cpu-util" {
+  type 				  = "CLOUDWATCH_METRIC"
+  cloudwatch_alarm_name  	  = aws_cloudwatch_metric_alarm.ghost-cw-metric-cpu-util.alarm_name
+  cloudwatch_alarm_region	  = "eu-central-1"
+  insufficient_data_health_status = "Healthy"
+}
