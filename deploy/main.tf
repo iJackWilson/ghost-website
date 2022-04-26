@@ -107,3 +107,7 @@ echo -e "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+qmohGVLTdSqRhXXIoRhedqj5D59tpYQ
 EOF
 }
 
+resource "aws_eip" "ghost-instance-eip" {
+  instance	= aws_instance.ghost-website-ec2-instance.id
+  vpc		= true
+}
