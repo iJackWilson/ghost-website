@@ -107,6 +107,11 @@ echo -e "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+qmohGVLTdSqRhXXIoRhedqj5D59tpYQ
 EOF
 }
 
+resource "aws_ebs_volume" "ghost-ebs-volume" {
+  availability_zone = "eu-central-1c"
+  encrypted = "true"
+}
+
 resource "aws_eip" "ghost-instance-eip" {
   instance	= aws_instance.ghost-website-ec2-instance.id
   vpc		= true
