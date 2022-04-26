@@ -112,6 +112,10 @@ resource "aws_ebs_volume" "ghost-ebs-volume" {
   size		    = 10
 }
 
+resource "aws_ebs_snapshot" "ghost-ebs-snapshot" {
+  volume_id = aws_ebs_volume.ghost-ebs-volume.id
+}
+
 resource "aws_eip" "ghost-instance-eip" {
   instance	= aws_instance.ghost-website-ec2-instance.id
   vpc		= true
